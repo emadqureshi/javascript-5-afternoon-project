@@ -22,14 +22,13 @@ function outer() {
   Invoke outer saving the return value into another variable called 'inner'.
 */
   
-// Code Here
+var inner = outer ();
 
 
 
 //Once you do that, invoke inner.
 
-//Code Here
-
+inner();
 
 
 ////////// PROBLEM 2 //////////
@@ -51,7 +50,8 @@ function callFriend(name) {
   (HINT: You will need to pass in arguments to both function invocations)
 */
 
-//Code Here
+var callJake = callFriend('Jake')
+callJake ('435-555-9248')
 
 
 
@@ -61,7 +61,12 @@ function callFriend(name) {
   Write a function called makeCounter that makes the following code work properly.
 */
 
-//Code Here
+function makeCounter() {
+  let count = 0;
+  return () => {
+    return ++count;
+  }
+}
 
 
 
@@ -89,6 +94,15 @@ function counterFactory(value) {
   // Code here.
 
   return {
+    inc: () => {
+      ++value
+      return value;
+    },
+    dec: () => {
+      --value;
+      return value;
+    }
+
 
   };
 }
@@ -113,9 +127,12 @@ function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
   // code message function here.
+  function message () {
+    return `${welcomeText} ${firstname} ${lastname}.`
+  }
 
   //Uncommment this to return the value of your message function
-  //return message;
+  return message;
 }
 
 var greeting = motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
@@ -144,6 +161,9 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: function () {
+      return privateMethod();
+    }
   };
 })();
 
@@ -162,9 +182,18 @@ function secretNumber() {
   var secret = 143;
 
   return {
-    // Code here
-  };
+    addToSecret: (num) => {
+      secret += num;
+      return secret;
+
+
+    },
+    takeAwayFromSecret: (num) =>
+    secret -= num;
+    return secret
+  }
 }
+
 
 
 
@@ -186,11 +215,3 @@ function secretNumber() {
   Fix the code below to log the desired output.
 */
 
-function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000);
-  }
-}
-timeOutCounter();

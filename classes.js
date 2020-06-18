@@ -29,8 +29,17 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
-
+class Employee {
+  constructor (first_name, last_name, email, age) {
+    this.first_name = first_name
+    this.last_name = last_name
+    this.email = email
+    this.age = age
+    this.makeWidget = function () {
+      return `${this.first_name} ${this.last_name} Widget`
+    }
+  }
+}
 
 ////////// PROBLEM 2 //////////
 
@@ -47,8 +56,21 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee {
+  constructor (first_name, last_name, email, age) {
+    super(first_name, last_name, email, age)
+    this.reports = []
 
+  }
+hire (employee) {
+this.reports.push (employee)
+
+}
+fire (index) {
+  this.reports.splice (index, 1)
+}
+
+}
 
 ////////// PROBLEM 3 //////////
 
@@ -71,7 +93,6 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
 
 
 
@@ -98,6 +119,22 @@
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+    constructor{}{
+        this.widgets_made_count =0;
+        this.wear_and_tear_count =0;
+        this.needs_reboot = false;
+    }
+    //methods
+    makeWidgets = function(num) {
+        this.widgets_made_count +=num;
+        this.wear_and_tear_count = Math.floot(this.widgets_made_count/50)
+    }
 
+    fixMachine = function() {
+        this.needs_reboot = true;
+    }
+    
+    
+}
 
